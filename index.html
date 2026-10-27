@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Sukrit — Portfolio OS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <!-- Tailwind goes in the head -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css"/>
+  <base target="_blank">
+</head>
+<body>
+  <div id="cursor"></div>
+  <div id="cursor-trail"></div>
+  <canvas id="particleCanvas"></canvas>
+  <div class="noise"></div>
+
+<!-- Theme Switcher -->
+<div class="theme-switcher">
+  <div class="theme-dot theme-cyan active" data-theme="cyan" title="Cyan"></div>
+  <div class="theme-dot theme-pink" data-theme="pink" title="Pink"></div>
+  <div class="theme-dot theme-green" data-theme="green" title="Green"></div>
+  <div class="theme-dot theme-gold" data-theme="gold" title="Gold"></div>
+</div>
+
+
+<!-- Vertical Text -->
+<div class="vertical-text">Let's Build Something memorable worldwide...</div>
+
+<!-- Overlay -->
+<div id="overlay"></div>
+
+<!-- App Windows -->
+<div class="app-window" id="win-about">
+  <div class="win-header">
+    <div class="win-title">About Me</div>
+    <div class="win-btns">
+      <div class="win-btn win-min">−</div>
+      <div class="win-btn win-close">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <h3>Hey, I'm Sukrit 👋</h3>
+    <p>A <strong>Full Stack Developer</strong> from Hyderabad, India. I started coding in 2025 and what began as curiosity turned into a full-blown obsession with building things people actually use.</p>
+    <p>Currently pursuing my <strong>B.Tech in Artificial Intelligence</strong> at Jain University. Outside academics, I'm constantly shipping side projects, exploring new frameworks, and trying to make the web a slightly more beautiful place.</p>
+    <p>I care about the <em>details</em> — the 200ms page load, the pixel-perfect spacing, the API response that doesn't keep users waiting.</p>
+    <h3 style="margin-top:16px">What I Bring</h3>
+    <p>• End-to-end product development from idea to deployment<br>• Clean, maintainable code with proper documentation<br>• UI/UX sensibility — I care how things look AND feel<br>• Fast learner — I pick up new stacks quickly<br>• Strong communication and team collaboration</p>
+  </div>
+</div>
+
+<div class="app-window" id="win-projects">
+  <div class="win-header">
+    <div class="win-title">My Projects</div>
+    <div class="win-btns">
+      <div class="win-btn win-min">−</div>
+      <div class="win-btn win-close">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <div class="project-detail">
+      <h4>🚀 Foodshare</h4>
+      <p>Restaurants can send their leftovers to local food banks and NGOs so that they can be distributed to those in need.</p>
+      <div class="p-stack"><span class="p-tag">Next.js</span><span class="p-tag">TypeScript</span><span class="p-tag">Figma</span></div>
+    </div>
+    <div class="project-detail">
+      <h4>⚡ Notion-Code template generator</h4>
+      <p>Notion-Code generator for creating and managing Kanban boards in real-time. without wasting much time in making one. Pre made template makes the processs much smoother and efficient for daily usage with beautiful background. Also has BYOK feature to it </p>
+      <div class="p-stack"><span class="p-tag">React</span><span class="p-tag">Figma</span><span class="p-tag">Node.js</span></div>
+    </div>
+    <div class="project-detail">
+      <h4>🔧 Microservices Auth API</h4>
+      <p>Production-grade API with JWT + OAuth2, rate limiting, email/SMS notifications, and full Swagger docs.</p>
+      <div class="p-stack"><span class="p-tag">Python</span><span class="p-tag">FastAPI</span><span class="p-tag">Redis</span><span class="p-tag">Docker</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="app-window" id="win-skills">
+  <div class="win-header">
+    <div class="win-title">Tech Stack</div>
+    <div class="win-btns">
+      <div class="win-btn win-min">−</div>
+      <div class="win-btn win-close">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <h3>Frontend</h3>
+    <div class="skill-row"><span class="skill-name">React / Next.js</span><div class="skill-bar"><div class="skill-fill" data-w="92"></div></div></div>
+    <div class="skill-row"><span class="skill-name">TypeScript</span><div class="skill-bar"><div class="skill-fill" data-w="85"></div></div></div>
+    <div class="skill-row"><span class="skill-name">Tailwind CSS</span><div class="skill-bar"><div class="skill-fill" data-w="90"></div></div></div>
+    <div class="skill-row"><span class="skill-name">JavaScript</span><div class="skill-bar"><div class="skill-fill" data-w="85"></div></div></div>
+    <div class="skill-row"><span class="skill-name">HTML / CSS</span><div class="skill-bar"><div class="skill-fill" data-w="95"></div></div></div>
+    <h3 style="margin-top:16px">Backend</h3>
+    <div class="skill-row"><span class="skill-name">Node.js</span><div class="skill-bar"><div class="skill-fill" data-w="88"></div></div></div>
+    <div class="skill-row"><span class="skill-name">Python / FastAPI</span><div class="skill-bar"><div class="skill-fill" data-w="80"></div></div></div>
+    <div class="skill-row"><span class="skill-name">PostgreSQL</span><div class="skill-bar"><div class="skill-fill" data-w="78"></div></div></div>
+    <h3 style="margin-top:16px">Tools</h3>
+    <p>Docker · AWS · Vercel · Git · Figma · Redis · Prisma · Linux </p>
+  </div>
+</div>
+
+<div class="app-window" id="win-contact">
+  <div class="win-header">
+    <div class="win-title">Send a Message</div>
+    <div class="win-btns">
+      <div class="win-btn win-min">−</div>
+      <div class="win-btn win-close">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <p style="margin-bottom:16px">I'm open to <strong>full-time roles, internships, and freelance work</strong>. Response time: usually within 24 hours.</p>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="fg"><label>Name</label><input type="text" placeholder="Your name" required/></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com" required/></div>
+      <div class="fg"><label>Message</label><textarea rows="4" placeholder="Tell me about the project or role..." required></textarea></div>
+      <button class="fsub" type="submit">Send →</button>
+    </form>
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--glass-border)">
+      <p style="font-size:.72rem;margin-bottom:8px"><strong>Or reach me directly:</strong></p>
+      <div class="direct-links" style="display:flex;flex-direction:column;gap:6px;font-size:.72rem;">
+        <a href="https://www.linkedin.com/in/sukrit-k-442a2331b/" target="_blank" rel="noopener noreferrer" class="social-item" style="color:var(--text-muted);text-decoration:none">💼 linkedin.com/in/sukrit-k-442a2331b</a>
+        <a href="https://github.com/sukrit325" target="_blank" rel="noopener noreferrer" class="social-item" style="color:var(--text-muted);text-decoration:none">🐙 github.com/sukrit325</a>
+        <a href="https://www.instagram.com/sukrit.kolluru/" target="_blank" rel="noopener noreferrer" class="social-item" style="color:var(--text-muted);text-decoration:none">📷 instagram.com/sukrit.kolluru</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app-window" id="win-settings">
+  <div class="win-header">
+    <div class="win-title">Settings</div>
+    <div class="win-btns">
+      <div class="win-btn win-min">−</div>
+      <div class="win-btn win-close">✕</div>
+    </div>
+  </div>
+  <div class="win-body">
+    <h3>Appearance</h3>
+    <p style="margin-bottom:12px">Choose your vibe:</p>
+    <div style="display:flex;gap:10px;margin-bottom:20px">
+      <div class="theme-dot theme-cyan" data-theme="cyan" style="width:32px;height:32px"></div>
+      <div class="theme-dot theme-pink" data-theme="pink" style="width:32px;height:32px"></div>
+      <div class="theme-dot theme-green" data-theme="green" style="width:32px;height:32px"></div>
+      <div class="theme-dot theme-gold" data-theme="gold" style="width:32px;height:32px"></div>
+    </div>
+    <h3>About This Site</h3>
+    <p>Built with vanilla HTML, CSS & JS. No frameworks. Designed to feel like a social media profile app rather than a traditional portfolio.</p>
+    <p style="margin-top:12px;font-size:.7rem;color:var(--text-muted)">© 2026 · Sukrit · Made with obsession</p>
+  </div>
+</div>
+
+<!-- Main OS -->
+<div id="os">
+  <div class="phone-frame">
+    <div class="screen" id="screen">
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <span class="status-time" id="clock">9:41</span>
+        <div class="status-icons">
+          <span>📶</span><span>📡</span><span>🔋</span>
+        </div>
+      </div>
+
+      <!-- Top Nav -->
+      <nav class="top-nav">
+        <div class="nav-left">
+          <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+          <div class="back-btn">←</div>
+        </div>
+        <ul class="nav-tabs">
+          <li><a href="#" class="active" data-tab="home">Home</a></li>
+          <li><a href="#" data-tab="about">About</a></li>
+          <li><a href="#" data-tab="work">Work</a></li>
+          <li><a href="#" data-tab="contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Card -->
+      <div class="glass header-card reveal">
+        <div class="header-top">
+          <div class="avatar" title="Sukrit Kolluru">
+            <div class="avatar-inner">SK</div>
+          </div>
+          <div class="header-info">
+            <div class="header-title">Portfolio</div>
+            <div class="new-post" style="cursor:pointer">New Post</div>
+          </div>
+        </div>
+        <div class="social-handles">
+          <a href="https://www.linkedin.com/in/sukrit-k-442a2331b/" target="_blank" rel="noopener noreferrer" class="social-item" title="LinkedIn Profile">
+            <span class="icon">💼</span>
+            <span class="social-text">https://www.linkedin.com/in/sukrit-k-442a2331b/</span>
+          </a>
+          <a href="https://www.instagram.com/sukrit.kolluru/" target="_blank" rel="noopener noreferrer" class="social-item" title="Instagram Profile">
+            <span class="icon">📷</span>
+            <span class="social-text">https://www.instagram.com/sukrit.kolluru/</span>
+          </a>
+          <a href="https://github.com/sukrit325" target="_blank" rel="noopener noreferrer" class="social-item" title="GitHub Profile">
+            <span class="icon">🐙</span>
+            <span class="social-text">https://github.com/sukrit325</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- About Card -->
+      <div class="glass about-card reveal reveal-d1">
+        <div class="about-title">About Me</div>
+        <p class="about-text">
+          Hi! I'm <strong>Sukrit</strong>, a developer from <strong>Hyderabad</strong>. 
+          I started coding in <em>2025</em> and what began as curiosity turned into 
+          a full-blown obsession with building things people actually use.
+        </p>
+      </div>
+
+      <!-- Content Area with Character -->
+      <div class="content-area reveal reveal-d2">
+        <div class="character-slot">
+          <div class="character-placeholder"><img src = "pics/Profile.png"></div>
+        </div>
+        <div class="exp-card">
+          <h3><div class="exp-title">My Experience</div></h3>
+          <p class="exp-text">
+            Started coding in 2025, initially just for fun. Moderately active in dev communities 
+            for 1.5 years. Collaborated in a few projects. Currently focused on 
+            full-stack development and open source contribution in the field of AIML. I've successfully completed an internship at Invotrx, Hyd.
+          </p>
+        </div>
+      </div>
+
+      <!-- Projects Section -->
+      <div class="projects-section reveal reveal-d3">
+        <div class="projects-header">
+          <div class="projects-title">My Projects</div>
+          <span style="font-size:1.1rem;opacity:.6">↘️</span>
+        </div>
+        <div class="projects-scroll">
+          <div class="project-card" data-app="projects">
+            <div class="project-thumb"><img src="pics/Foodshare.png"></div>
+            <div class="project-info"><div class="project-num">FEATURED</div><div class="project-name">FoodShare</div></div>
+          </div>
+          <div class="project-card" data-app="projects">
+            <div class="project-thumb"><img src="pics/Notionforge.png"></div>
+            <div class="project-info"><div class="project-num">02</div><div class="project-name">NotionForge</div></div>
+          </div>
+          <div class="project-card" data-app="projects">
+            <div class="project-thumb"><img src="pics/Medprice.png"></div>
+            <div class="project-info"><div class="project-num">03</div><div class="project-name">Medprice</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Software Section -->
+      <div class="software-section reveal">
+        <div class="software-title">Software</div>
+        <div class="software-grid">
+          <div class="software-item" title="VS Code">💻<span class="software-label">VS Code</span></div>
+          <div class="software-item" title="Figma">🎨<span class="software-label">Figma</span></div>
+          <div class="software-item" title="Git">🐙<span class="software-label">Git</span></div>
+          <div class="software-item" title="Docker">🐳<span class="software-label">Docker</span></div>
+          <div class="software-item" title="Node.js">🟢<span class="software-label">Node.js</span></div>
+          <div class="software-item" title="React">⚛️<span class="software-label">React</span></div>
+          <div class="software-item" title="Python">🐍<span class="software-label">Python</span></div>
+          <div class="software-item" title="PostgreSQL">🐘<span class="software-label">PostgreSQL</span></div>
+        </div>
+      </div>
+
+      <!-- Bottom Quote -->
+      <div class="bottom-quote reveal">
+        <strong>Every project has a story.</strong><br>
+        Even if not all of them can be read.<br>
+        <em>Building things that matter, one commit at a time.</em>
+      </div>
+    </div>
+
+    <!-- Dock -->
+
+    <div class="dock" id="mainDock">
+      <div class="dock-item" data-app="settings" title="Settings">
+      ⚙️<span class="dock-label">Settings</span>
+</div>
+      <div class="dock-item active" data-app="home" title="Home">🏠<span class="dock-label">Home</span></div>
+    
+      <div class="dock-item" data-app="about" title="About">
+        👤<span class="dock-label">About</span>
+      </div>
+      <div class="dock-item" data-app="projects" title="Projects">
+        💼<span class="dock-label">Projects</span>
+      </div>
+      <div class="dock-item" data-app="skills" title="Skills">
+        ⚡<span class="dock-label">Skills</span>
+      </div>
+      <div class="dock-item" data-app="contact" title="Contact">
+        ✉️<span class="dock-label">Contact</span>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
